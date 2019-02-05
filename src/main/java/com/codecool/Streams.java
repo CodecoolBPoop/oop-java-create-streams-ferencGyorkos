@@ -23,6 +23,9 @@ public class Streams {
         Stream<String> stream2 = Stream.of(a1);
         stream2.forEach(x -> System.out.println(x));
 
+        Supplier<Stream<String>> stream3 =
+                () -> Stream.of("one", "two", "three");
+
 
         /*
          * Create a stream containing the Strings "one" , "two" and "three"
@@ -48,7 +51,7 @@ public class Streams {
          * HINT: the keyword here is "collect"
          */
 
-        List<String> l1 = s1.collect(Collectors.toList());
+        List<String> l1 = stream3.get().collect(Collectors.toList());
         l1.forEach(System.out::println);
 
 
@@ -68,13 +71,21 @@ public class Streams {
 
         Integer twoToTheZeroth = 1;
         UnaryOperator<Integer> doubler = (Integer x) -> 2 * x;
-//        Stream<Integer> s4 = /* ??? */;
+//        Stream<Integer> s4 = Stream.iterate(twoToTheZeroth, i -> i * 2);
+        Stream<Integer> s4 = Stream.iterate(twoToTheZeroth, doubler);
+
+        List<Integer> collect = s4.limit(20).collect(Collectors.toList());
+        collect.forEach(System.out::println);
+
+        Supplier<Stream<Integer>> stream4 = () -> Stream.iterate(twoToTheZeroth, doubler).limit(20);
+
 
         /*
          * Create a stream containing the first ten elements of s4.
          */
 
-//        Stream<Integer> s5 = s4. /* ??? */;
+        Stream<Integer> s5 = stream4.get().limit(10);
+        s5.forEach(System.out::println);
 
         /*
          * Create a stream containing the elements of the Fibonacci
