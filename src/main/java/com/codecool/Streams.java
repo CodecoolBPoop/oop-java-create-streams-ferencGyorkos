@@ -17,11 +17,12 @@ public class Streams {
 
         //Arrays.stream
         Stream<String> s1 = Arrays.stream(a1);
-        //s1.forEach(x -> System.out.println(x));
+        s1.forEach(x -> System.out.println(x));
 
         //Stream.of
         Stream<String> stream2 = Stream.of(a1);
-        //stream2.forEach(x -> System.out.println(x));
+        stream2.forEach(x -> System.out.println(x));
+
 
         /*
          * Create a stream containing the Strings "one" , "two" and "three"
@@ -30,6 +31,7 @@ public class Streams {
 
         Stream<String> s2 = Stream.of("one", "two", "three");
 
+
         /*
          * Create a stream using a stream builder.
          */
@@ -37,7 +39,7 @@ public class Streams {
         Stream.Builder<String> b1 = Stream.builder();
         /* ??? */
         Stream<String> s3 = b1.add("one").add("two").add("three").build();
-        //s3.forEach(System.out::println);
+        s3.forEach(System.out::println);
 
 
         /*
@@ -46,7 +48,9 @@ public class Streams {
          * HINT: the keyword here is "collect"
          */
 
-        List<String> l1 = /* ??? */;
+        List<String> l1 = s1.collect(Collectors.toList());
+        l1.forEach(System.out::println);
+
 
         /*
          * Streams can be infinite.  We obviously cannot create such a
@@ -64,13 +68,13 @@ public class Streams {
 
         Integer twoToTheZeroth = 1;
         UnaryOperator<Integer> doubler = (Integer x) -> 2 * x;
-        Stream<Integer> s4 = /* ??? */;
+//        Stream<Integer> s4 = /* ??? */;
 
         /*
          * Create a stream containing the first ten elements of s4.
          */
 
-        Stream<Integer> s5 = s4. /* ??? */;
+//        Stream<Integer> s5 = s4. /* ??? */;
 
         /*
          * Create a stream containing the elements of the Fibonacci
@@ -79,7 +83,7 @@ public class Streams {
          * HINT: You will need to create a new class for this.
          */
 
-        Supplier<Integer> fibSupp = new Fibonacci();
-        Stream<Integer> s6 = /* ??? */;
+//        Supplier<Integer> fibSupp = new Fibonacci();
+//        Stream<Integer> s6 = /* ??? */;
     }
 }
