@@ -1,5 +1,6 @@
 package com.codecool;
 
+import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.List;
@@ -13,22 +14,31 @@ public class Streams {
          */
 
         String[] a1 = {"one", "two", "three"};
-        Stream<String> s1 = /* ??? */;
+
+        //Arrays.stream
+        Stream<String> s1 = Arrays.stream(a1);
+        //s1.forEach(x -> System.out.println(x));
+
+        //Stream.of
+        Stream<String> stream2 = Stream.of(a1);
+        //stream2.forEach(x -> System.out.println(x));
 
         /*
          * Create a stream containing the Strings "one" , "two" and "three"
          * without using an array
          */
 
-        Stream<String> s2 = /* ??? */;
+        Stream<String> s2 = Stream.of("one", "two", "three");
 
         /*
          * Create a stream using a stream builder.
          */
 
-        Stream.Builder<String> b1 = /* ??? */;
+        Stream.Builder<String> b1 = Stream.builder();
         /* ??? */
-        Stream<String> s3 = /* ??? */;
+        Stream<String> s3 = b1.add("one").add("two").add("three").build();
+        //s3.forEach(System.out::println);
+
 
         /*
          * Collect one of the above defined streams into a list.
